@@ -9,15 +9,35 @@ const themes = {
     image: "images/hunting.jpg",
     icon: "spear"
   },
+  gathering: {
+    title: "Собирательство",
+    image: "images/gathering.jpg",
+    icon: "leaf"
+  },
   tools: {
     title: "Орудия труда",
     image: "images/tools.jpg",
     icon: "tool"
   },
+  fire: {
+    title: "Костёр и огонь",
+    image: "images/campfire.jpg",
+    icon: "camp"
+  },
+  caveHome: {
+    title: "Пещера",
+    image: "images/cave.jpg",
+    icon: "cave"
+  },
   cave: {
     title: "Наскальные рисунки",
     image: "images/cave-painting.jpg",
     icon: "cave"
+  },
+  settlement: {
+    title: "Стоянка древних людей",
+    image: "images/settlement.jpg",
+    icon: "home"
   },
   dwelling: {
     title: "Жилища и стоянки",
@@ -34,6 +54,16 @@ const themes = {
     image: "images/early-farming.jpg",
     icon: "leaf"
   },
+  herding: {
+    title: "Скотоводство",
+    image: "images/herding.jpg",
+    icon: "leaf"
+  },
+  bronze: {
+    title: "Бронзовые орудия",
+    image: "images/bronze-tools.jpg",
+    icon: "tool"
+  },
   map: {
     title: "Карта и время",
     image: "images/timeline-map.jpg",
@@ -41,14 +71,17 @@ const themes = {
   }
 };
 
-const themeOrder = ["people", "hunting", "tools", "cave", "dwelling", "archaeology", "farming", "map"];
+const themeOrder = [
+  "people", "hunting", "gathering", "tools", "fire", "caveHome", "cave",
+  "archaeology", "settlement", "farming", "herding", "dwelling", "map", "bronze"
+];
 
 const questionThemes = [
   "people", "archaeology", "people", "tools", "tools",
-  "hunting", "people", "hunting", "people", "people",
-  "map", "map", "cave", "archaeology", "cave",
+  "gathering", "gathering", "hunting", "fire", "fire",
+  "map", "map", "cave", "people", "cave",
   "cave", "cave", "people", "map", "farming",
-  "farming", "farming", "farming", "tools", "farming"
+  "farming", "herding", "settlement", "bronze", "farming"
 ];
 
 const icons = {
@@ -151,14 +184,14 @@ const questions = [
     ]
   },
   {
-    text: "Какие занятия относились к присваивающему хозяйству? Выбери 2 ответа.",
-    type: "multi",
-    explanation: "Присваивающее хозяйство - это когда люди берут готовое у природы: охотятся и собирают растения.",
-    choices: [
-      { text: "Земледелие", correct: false },
-      { text: "Охота", correct: true },
-      { text: "Собирательство", correct: true },
-      { text: "Скотоводство", correct: false }
+    text: "Сопоставь занятие и объяснение.",
+    type: "match",
+    explanation: "Охота, собирательство и рыболовство относятся к присваивающему хозяйству: люди брали у природы готовую пищу.",
+    pairs: [
+      { left: "Собирательство", right: "Поиск съедобных растений, корней, ягод и плодов" },
+      { left: "Охота", right: "Совместная добыча животных" },
+      { left: "Рыболовство", right: "Ловля рыбы с помощью гарпунов и других орудий" },
+      { left: "Присваивающее хозяйство", right: "Жизнь за счёт того, что даёт природа" }
     ]
   },
   {
@@ -228,14 +261,14 @@ const questions = [
     ]
   },
   {
-    text: "Какие идеи относились к ранним верованиям? Выбери 2 ответа.",
-    type: "multi",
-    explanation: "Люди верили, что у человека есть душа, а в природе действуют духи.",
-    choices: [
-      { text: "У человека есть душа", correct: true },
-      { text: "В природе есть духи", correct: true },
-      { text: "Главным объяснением мира была наука", correct: false },
-      { text: "Обычаи не были важны для общины", correct: false }
+    text: "Сопоставь понятие и объяснение.",
+    type: "match",
+    explanation: "Верования и искусство помогали древним людям объяснять мир и передавать важный опыт.",
+    pairs: [
+      { left: "Анимизм", right: "Вера в духов природы и предметов" },
+      { left: "Тотемизм", right: "Вера в связь рода с животным или растением" },
+      { left: "Петроглифы", right: "Древние рисунки, вырезанные на камне" },
+      { left: "Альтамира", right: "Пещера с цветными наскальными рисунками" }
     ]
   },
   {
@@ -294,14 +327,14 @@ const questions = [
     ]
   },
   {
-    text: "Какие утверждения о расах верны? Выбери 2 ответа.",
-    type: "multi",
-    explanation: "Расы сложились из-за приспособления к разному климату. Все расы имеют равные возможности для развития.",
-    choices: [
-      { text: "Расы связаны с приспособлением людей к климату", correct: true },
-      { text: "Все расы имеют равные возможности для развития", correct: true },
-      { text: "Расы отличаются только языком и обычаями", correct: false },
-      { text: "Расы появились из-за разных занятий людей", correct: false }
+    text: "Сопоставь общественное понятие и объяснение.",
+    type: "match",
+    explanation: "Род, племя и вождь показывают, как люди объединялись и управляли общими делами.",
+    pairs: [
+      { left: "Родовая община", right: "Коллектив кровных родственников с общим хозяйством" },
+      { left: "Племя", right: "Объединение нескольких родов с общей территорией и обычаями" },
+      { left: "Вождь", right: "Старейшина одного из родов, который руководил племенем" },
+      { left: "Расы", right: "Большие группы людей с общими внешними признаками" }
     ]
   },
   {
@@ -338,14 +371,14 @@ const questions = [
     ]
   },
   {
-    text: "Что нового появилось в неолите? Выбери 2 ответа.",
-    type: "multi",
-    explanation: "В неолите развивались ремесла: люди делали керамику, ткали ткань и обменивались изделиями.",
-    choices: [
-      { text: "Производство керамики", correct: true },
-      { text: "Ткачество", correct: true },
-      { text: "Охота с копьями и гарпунами", correct: false },
-      { text: "Жилища из костей животных и шкур", correct: false }
+    text: "Сопоставь новое умение и его смысл.",
+    type: "match",
+    explanation: "В неолите появились ремесла и обмен: люди делали вещи, хранили продукты и менялись ими.",
+    pairs: [
+      { left: "Керамика", right: "Изготовление глиняной посуды" },
+      { left: "Ткачество", right: "Изготовление ткани для одежды" },
+      { left: "Ремесло", right: "Изготовление нужных вещей особым умением" },
+      { left: "Обмен", right: "Передача изделий или продуктов между общинами" }
     ]
   },
   {
@@ -382,6 +415,8 @@ const resultPanel = document.querySelector("#resultPanel");
 const materials = document.querySelector("#materials");
 const letters = ["А", "Б", "В", "Г", "Д"];
 let lastAutoScrollId = 0;
+let activeItems = [];
+let selectedMatchLeft = null;
 
 function shuffle(array) {
   const copy = [...array];
@@ -400,27 +435,104 @@ function questionTheme(index) {
   return themes[questionThemes[index]] || themes.archaeology;
 }
 
-function renderQuiz() {
+function buildItems(shouldShuffleTasks = false) {
+  const items = questions.map((question, index) => ({
+    question,
+    theme: questionTheme(index),
+    originalIndex: index
+  }));
+  activeItems = shouldShuffleTasks ? shuffle(items) : items;
+}
+
+function renderChoiceTask(container, question, questionId) {
+  const inputType = question.type === "multi" ? "checkbox" : "radio";
+  const choices = shuffleChoices(question.choices);
+  const answers = document.createElement("div");
+  answers.className = "answers";
+
+  choices.forEach((choice, choiceIndex) => {
+    const id = `${questionId}-${choiceIndex}`;
+    const row = document.createElement("div");
+    row.className = `choice ${inputType === "checkbox" ? "checkbox" : "radio"}`;
+    row.dataset.correct = String(choice.correct);
+    row.innerHTML = `
+      <input id="${id}" type="${inputType}" name="${questionId}" value="${choiceIndex}">
+      <label for="${id}">
+        <span class="mark">${letters[choiceIndex]}</span>
+        <span class="choice-text">${choice.text}</span>
+      </label>
+    `;
+    answers.append(row);
+  });
+
+  container.append(answers);
+}
+
+function renderMatchingTask(container, question, questionId) {
+  const matching = document.createElement("div");
+  matching.className = "matching";
+  const leftItems = question.pairs.map((pair, index) => ({ ...pair, id: `${questionId}-pair-${index}` }));
+  const rightItems = shuffle(leftItems.map((pair) => ({ id: pair.id, text: pair.right })));
+
+  matching.innerHTML = `
+    <svg class="match-lines" aria-hidden="true"></svg>
+    <div class="match-column match-left" aria-label="Понятия"></div>
+    <div class="match-column match-right" aria-label="Объяснения"></div>
+    <div class="match-pairs" aria-live="polite"></div>
+  `;
+
+  const leftColumn = matching.querySelector(".match-left");
+  const rightColumn = matching.querySelector(".match-right");
+
+  leftItems.forEach((item, index) => {
+    const button = document.createElement("button");
+    button.className = "match-item match-left-item";
+    button.type = "button";
+    button.dataset.matchId = item.id;
+    button.innerHTML = `<span class="match-mark">${letters[index]}</span><span>${item.left}</span>`;
+    leftColumn.append(button);
+  });
+
+  rightItems.forEach((item, index) => {
+    const button = document.createElement("button");
+    button.className = "match-item match-right-item";
+    button.type = "button";
+    button.dataset.matchId = item.id;
+    button.innerHTML = `<span class="match-mark">${index + 1}</span><span>${item.text}</span>`;
+    rightColumn.append(button);
+  });
+
+  container.append(matching);
+  renderMatchPairs(matching);
+}
+
+function renderQuiz(options = {}) {
+  buildItems(Boolean(options.shuffleTasks));
+  selectedMatchLeft = null;
   quiz.innerHTML = "";
-  totalCount.textContent = questions.length;
-  result.textContent = "Когда ответишь, нажми проверку.";
+  totalCount.textContent = activeItems.length;
+  result.hidden = true;
+  result.textContent = "";
   resultPanel.classList.remove("is-revealed");
 
-  questions.forEach((question, questionIndex) => {
+  activeItems.forEach((item, questionIndex) => {
+    const { question, theme } = item;
     const questionId = `q${questionIndex}`;
-    const theme = questionTheme(questionIndex);
     const article = document.createElement("article");
     article.className = "question";
     article.dataset.questionId = questionId;
     article.dataset.questionIndex = String(questionIndex);
+    article.dataset.type = question.type;
     article.style.animationDelay = `${Math.min(questionIndex, 10) * 35}ms`;
 
-    const correctCount = question.choices.filter((choice) => choice.correct).length;
-    const helpText = question.type === "multi"
-      ? `Выбери ${correctCount} ответа`
-      : "Выбери 1 ответ";
-    const inputType = question.type === "multi" ? "checkbox" : "radio";
-    const choices = shuffleChoices(question.choices);
+    const correctCount = question.type === "match"
+      ? question.pairs.length
+      : question.choices.filter((choice) => choice.correct).length;
+    const helpText = question.type === "match"
+      ? "Соедини пары"
+      : question.type === "multi"
+        ? `Выбери ${correctCount} ответа`
+        : "Выбери 1 ответ";
 
     article.innerHTML = `
       <div class="question-media" aria-hidden="true">
@@ -429,43 +541,118 @@ function renderQuiz() {
       </div>
       <div class="question-body">
         <div class="question-top">
-          <span class="tag"><span class="tag-icon" aria-hidden="true">${icon("map")}</span>Вопрос ${questionIndex + 1} из ${questions.length}</span>
-          <span class="tag choice-mode"><span class="tag-icon" aria-hidden="true">${icon(question.type === "multi" ? "check" : "flag")}</span>${helpText}</span>
+          <span class="tag"><span class="tag-icon" aria-hidden="true">${icon("map")}</span>Вопрос ${questionIndex + 1} из ${activeItems.length}</span>
+          <span class="tag choice-mode"><span class="tag-icon" aria-hidden="true">${icon(question.type === "match" ? "shuffle" : question.type === "multi" ? "check" : "flag")}</span>${helpText}</span>
         </div>
         <h2>${question.text}</h2>
-        <div class="answers"></div>
+        <div class="task-area"></div>
         <p class="feedback" aria-live="polite"></p>
       </div>
     `;
 
-    const answers = article.querySelector(".answers");
-    choices.forEach((choice, choiceIndex) => {
-      const id = `${questionId}-${choiceIndex}`;
-      const row = document.createElement("div");
-      row.className = `choice ${inputType === "checkbox" ? "checkbox" : "radio"}`;
-      row.dataset.correct = String(choice.correct);
-      row.innerHTML = `
-        <input id="${id}" type="${inputType}" name="${questionId}" value="${choiceIndex}">
-        <label for="${id}">
-          <span class="mark">${letters[choiceIndex]}</span>
-          <span class="choice-text">${choice.text}</span>
-        </label>
-      `;
-      answers.append(row);
-    });
+    const taskArea = article.querySelector(".task-area");
+    if (question.type === "match") {
+      renderMatchingTask(taskArea, question, questionId);
+    } else {
+      renderChoiceTask(taskArea, question, questionId);
+    }
 
     quiz.append(article);
   });
 
   updateProgress();
+  requestAnimationFrame(updateAllMatchLines);
+}
+
+function matchingElement(questionElement) {
+  return questionElement.querySelector(".matching");
+}
+
+function getMatchPairs(matching) {
+  return [...matching.querySelectorAll(".match-left-item")]
+    .filter((left) => left.dataset.matchRight)
+    .map((left) => ({
+      leftId: left.dataset.matchId,
+      rightId: left.dataset.matchRight,
+      leftText: left.querySelector("span:last-child").textContent,
+      rightText: matching.querySelector(`.match-right-item[data-match-id="${left.dataset.matchRight}"] span:last-child`)?.textContent || ""
+    }));
+}
+
+function renderMatchPairs(matching) {
+  const list = matching.querySelector(".match-pairs");
+  const pairs = getMatchPairs(matching);
+
+  if (!pairs.length) {
+    list.innerHTML = "<p class=\"match-empty\">Выбери карточку слева, потом подходящую карточку справа.</p>";
+  } else {
+    list.innerHTML = pairs.map((pair) => `
+      <div class="match-pair-card" data-left-id="${pair.leftId}" data-right-id="${pair.rightId}">
+        <span>${pair.leftText}</span>
+        <span class="match-arrow">→</span>
+        <span>${pair.rightText}</span>
+      </div>
+    `).join("");
+  }
+
+  updateMatchLines(matching);
+}
+
+function updateMatchLines(matching) {
+  const svg = matching.querySelector(".match-lines");
+  if (!svg) {
+    return;
+  }
+
+  const rect = matching.getBoundingClientRect();
+  svg.setAttribute("viewBox", `0 0 ${rect.width} ${rect.height}`);
+  svg.innerHTML = "";
+
+  getMatchPairs(matching).forEach((pair) => {
+    const left = matching.querySelector(`.match-left-item[data-match-id="${pair.leftId}"]`);
+    const right = matching.querySelector(`.match-right-item[data-match-id="${pair.rightId}"]`);
+    if (!left || !right) {
+      return;
+    }
+
+    const leftRect = left.getBoundingClientRect();
+    const rightRect = right.getBoundingClientRect();
+    const x1 = leftRect.right - rect.left;
+    const y1 = leftRect.top + leftRect.height / 2 - rect.top;
+    const x2 = rightRect.left - rect.left;
+    const y2 = rightRect.top + rightRect.height / 2 - rect.top;
+    const mid = Math.max(36, Math.abs(x2 - x1) / 2);
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
+    path.setAttribute("d", `M ${x1} ${y1} C ${x1 + mid} ${y1}, ${x2 - mid} ${y2}, ${x2} ${y2}`);
+    path.classList.add("match-line");
+    if (matching.closest(".question").classList.contains("checked")) {
+      path.classList.add(pair.leftId === pair.rightId ? "correct" : "wrong");
+    }
+    svg.append(path);
+  });
+}
+
+function updateAllMatchLines() {
+  document.querySelectorAll(".matching").forEach(updateMatchLines);
 }
 
 function getQuestionState(questionElement) {
+  if (questionElement.dataset.type === "match") {
+    const matching = matchingElement(questionElement);
+    const leftItems = [...matching.querySelectorAll(".match-left-item")];
+    const pairs = getMatchPairs(matching);
+    const isAnswered = pairs.length === leftItems.length;
+    const isCorrect = isAnswered && pairs.every((pair) => pair.leftId === pair.rightId);
+    return { inputs: [], selected: pairs, correctInputs: leftItems, isAnswered, isCorrect, pairs };
+  }
+
   const inputs = [...questionElement.querySelectorAll("input")];
   const selected = inputs.filter((input) => input.checked);
   const correctInputs = inputs.filter((input) => input.closest(".choice").dataset.correct === "true");
   const selectedSet = new Set(selected);
-  const isAnswered = selected.length > 0;
+  const isMulti = inputs[0]?.type === "checkbox";
+  const isAnswered = isMulti ? selected.length === correctInputs.length : selected.length > 0;
   const isCorrect = isAnswered
     && selected.length === correctInputs.length
     && correctInputs.every((input) => selectedSet.has(input));
@@ -494,6 +681,24 @@ function clearQuestionFeedback(questionElement) {
   questionElement.classList.remove("checked");
   questionElement.classList.remove("locked");
   questionElement.removeAttribute("data-state");
+
+  if (questionElement.dataset.type === "match") {
+    questionElement.querySelectorAll(".match-item").forEach((item) => {
+      item.disabled = false;
+      item.classList.remove("active", "paired", "correct", "wrong");
+      if (item.classList.contains("match-left-item")) {
+        delete item.dataset.matchRight;
+      }
+      if (item.classList.contains("match-right-item")) {
+        delete item.dataset.matchLeft;
+      }
+    });
+    questionElement.querySelectorAll(".match-pair-card").forEach((card) => {
+      card.classList.remove("correct", "wrong");
+    });
+    renderMatchPairs(matchingElement(questionElement));
+  }
+
   questionElement.querySelectorAll(".choice").forEach((choice) => {
     choice.classList.remove("correct", "wrong-selected");
     choice.querySelector("input").disabled = false;
@@ -508,10 +713,39 @@ function clearQuestionFeedback(questionElement) {
 function showQuestionFeedback(questionElement, index) {
   const state = getQuestionState(questionElement);
   const feedback = questionElement.querySelector(".feedback");
-  const question = questions[index];
+  const question = activeItems[index].question;
 
   questionElement.classList.add("checked");
   questionElement.classList.add("locked");
+
+  if (question.type === "match") {
+    const matching = matchingElement(questionElement);
+    matching.querySelectorAll(".match-item").forEach((item) => {
+      item.disabled = true;
+      item.classList.remove("active");
+    });
+    getMatchPairs(matching).forEach((pair) => {
+      const isCorrectPair = pair.leftId === pair.rightId;
+      matching.querySelector(`.match-left-item[data-match-id="${pair.leftId}"]`)?.classList.add(isCorrectPair ? "correct" : "wrong");
+      matching.querySelector(`.match-right-item[data-match-id="${pair.rightId}"]`)?.classList.add(isCorrectPair ? "correct" : "wrong");
+      matching.querySelector(`.match-pair-card[data-left-id="${pair.leftId}"]`)?.classList.add(isCorrectPair ? "correct" : "wrong");
+    });
+    updateMatchLines(matching);
+
+    if (state.isCorrect) {
+      questionElement.dataset.state = "correct";
+      feedback.className = "feedback good";
+      feedback.textContent = `Верно. ${question.explanation}`;
+    } else {
+      questionElement.dataset.state = "wrong";
+      feedback.className = "feedback try";
+      const prefix = state.isAnswered ? "Есть ошибка в сопоставлении." : "Ты пока не соединил все пары.";
+      feedback.textContent = `${prefix} ${question.explanation}`;
+    }
+
+    return state;
+  }
+
   questionElement.querySelectorAll(".choice").forEach((choice) => {
     const input = choice.querySelector("input");
     const isCorrectChoice = choice.dataset.correct === "true";
@@ -534,24 +768,17 @@ function showQuestionFeedback(questionElement, index) {
   return state;
 }
 
-function resultLabel(percent) {
-  if (percent >= 85) {
-    return "Отлично";
+function gradeForScore(score) {
+  if (score >= 22) {
+    return { mark: 5, text: "Отлично!" };
   }
-  if (percent >= 60) {
-    return "Хорошо";
+  if (score >= 18) {
+    return { mark: 4, text: "Хорошо, но можно повторить ошибки" };
   }
-  return "Нужно повторить";
-}
-
-function resultMessage(label) {
-  if (label === "Отлично") {
-    return "Тему знаешь очень уверенно.";
+  if (score >= 13) {
+    return { mark: 3, text: "Зачёт, но тему лучше повторить" };
   }
-  if (label === "Хорошо") {
-    return "Основа понятна, осталось повторить ошибки.";
-  }
-  return "Лучше ещё раз перечитать конспект и пройти тест снова.";
+  return { mark: 2, text: "Нужно ещё раз пройти тему" };
 }
 
 function checkQuiz() {
@@ -569,10 +796,21 @@ function checkQuiz() {
     }
   });
 
-  const percent = questionElements.length ? Math.round((score / questionElements.length) * 100) : 0;
-  const label = resultLabel(percent);
+  const total = questionElements.length;
+  const wrong = total - score;
+  const percent = total ? Math.round((score / total) * 100) : 0;
+  const grade = gradeForScore(score);
   resultPanel.classList.add("is-revealed");
-  result.innerHTML = `<strong>Результат: ${score} из ${questions.length} (${percent}%).</strong> Оценка: ${label}. Отвечено: ${answered} из ${questions.length}. ${resultMessage(label)}`;
+  result.hidden = false;
+  result.innerHTML = `
+    <div class="result-grid">
+      <span><strong>Правильно:</strong> ${score} из ${total}</span>
+      <span><strong>Ошибок:</strong> ${wrong}</span>
+      <span><strong>Результат:</strong> ${percent}%</span>
+      <span><strong>Оценка:</strong> ${grade.mark} — ${grade.text}</span>
+      <span><strong>Отвечено:</strong> ${answered} из ${total}</span>
+    </div>
+  `;
   result.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
@@ -604,8 +842,72 @@ function scrollToNextQuestion(questionElement) {
   }, 520);
 }
 
+function connectMatchPair(questionElement, left, right) {
+  const matching = matchingElement(questionElement);
+  const oldRightId = left.dataset.matchRight;
+  const oldLeftId = right.dataset.matchLeft;
+
+  if (oldRightId) {
+    const oldRight = matching.querySelector(`.match-right-item[data-match-id="${oldRightId}"]`);
+    oldRight?.classList.remove("paired");
+    if (oldRight) {
+      delete oldRight.dataset.matchLeft;
+    }
+  }
+
+  if (oldLeftId) {
+    const oldLeft = matching.querySelector(`.match-left-item[data-match-id="${oldLeftId}"]`);
+    oldLeft?.classList.remove("paired");
+    if (oldLeft) {
+      delete oldLeft.dataset.matchRight;
+    }
+  }
+
+  left.dataset.matchRight = right.dataset.matchId;
+  right.dataset.matchLeft = left.dataset.matchId;
+  left.classList.add("paired");
+  right.classList.add("paired");
+  matching.querySelectorAll(".match-item").forEach((item) => item.classList.remove("active"));
+  selectedMatchLeft = null;
+  renderMatchPairs(matching);
+}
+
+function handleMatchClick(event) {
+  const button = event.target.closest(".match-item");
+  if (!button) {
+    return;
+  }
+
+  const questionElement = button.closest(".question");
+  if (!questionElement || questionElement.classList.contains("locked")) {
+    return;
+  }
+
+  const matching = matchingElement(questionElement);
+  if (button.classList.contains("match-left-item")) {
+    matching.querySelectorAll(".match-left-item").forEach((item) => item.classList.remove("active"));
+    button.classList.add("active");
+    selectedMatchLeft = button;
+    return;
+  }
+
+  if (!selectedMatchLeft || selectedMatchLeft.closest(".question") !== questionElement) {
+    matching.querySelectorAll(".match-right-item").forEach((item) => item.classList.remove("active"));
+    button.classList.add("active");
+    return;
+  }
+
+  connectMatchPair(questionElement, selectedMatchLeft, button);
+  const state = getQuestionState(questionElement);
+  updateProgress();
+  if (state.isAnswered) {
+    showQuestionFeedback(questionElement, Number(questionElement.dataset.questionIndex));
+    scrollToNextQuestion(questionElement);
+  }
+}
+
 document.querySelector("#checkButton").addEventListener("click", checkQuiz);
-document.querySelector("#shuffleButton").addEventListener("click", renderQuiz);
+document.querySelector("#shuffleButton").addEventListener("click", () => renderQuiz({ shuffleTasks: true }));
 document.querySelector("#resetButton").addEventListener("click", () => {
   renderQuiz();
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -614,6 +916,7 @@ document.querySelector("#showMaterialsButton").addEventListener("click", () => {
   materials.open = true;
   materials.scrollIntoView({ behavior: "smooth", block: "start" });
 });
+quiz.addEventListener("click", handleMatchClick);
 quiz.addEventListener("change", (event) => {
   if (!(event.target instanceof HTMLInputElement)) {
     return;
@@ -647,6 +950,8 @@ quiz.addEventListener("change", (event) => {
 
   updateProgress();
 });
+
+window.addEventListener("resize", updateAllMatchLines);
 
 decorateStaticIcons();
 renderThemeBoard();
